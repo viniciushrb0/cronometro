@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Agnnes Beatriz ❤️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --cor-principal: #a63200;
+            --cor-brilhante: #f24e00;
+            --fundo-escuro: #1a1a1a;
+            --cor-cartao: #2a2a2a;
+        }
+
+        body {
+            background-color: var(--fundo-escuro);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .layout-geral {
+            width: 100%;
+            max-width: 450px;
+            background: linear-gradient(to bottom, var(--cor-principal), var(--fundo-escuro) 45%);
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .topo-navegacao {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .imagem-capa {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+        }
+
+        .detalhes-musica {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .detalhes-musica h2 { margin: 0; font-size: 22px; letter-spacing: -0.5px; }
+        .detalhes-musica p { margin: 5px 0; color: #cdcdcd; font-weight: 600; }
+
+        .barra-tempo {
+            width: 100%;
+            height: 5px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            margin: 25px 0 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        #progresso-interno {
+            height: 100%;
+            width: 0%;
+            background: #ffffff;
+            border-radius: 10px;
+        }
+
+        .indicador-tempo { display: flex; justify-content: space-between; font-size: 12px; color: #b3b3b3; }
+
+        .controles-musica {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 25px 0 45px;
+            font-size: 26px;
+        }
+
+        .botao-acao {
+            background: #ffffff;
+            color: var(--cor-principal);
+            width: 65px; height: 65px;
+            border-radius: 50%;
+            border: none;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .bloco-conteudo {
+            background-color: var(--cor-cartao);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .foto-casal {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .texto-sobreposto {
+            position: absolute;
+            top: 35px; left: 35px;
+            font-weight: 800; font-size: 18px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+        }
+
+        .grade-cronometro {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .caixa-tempo {
+            background: #3a3a3a;
+            padding: 15px 5px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .caixa-tempo span { display: block; font-weight: bold; font-size: 20px; color: #fff; }
+        .caixa-tempo small { color: #bbbbbb; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .bloco-mensagem {
+            background-color: var(--cor-brilhante);
+            padding: 22px;
+            border-radius: 18px;
+            margin-bottom: 50px;
+        }
+        .bloco-mensagem p { font-size: 19px; font-weight: 800; margin-bottom: 18px; line-height: 1.3; }
+        .botao-abrir {
+            background: #ffffff; color: #000; border: none;
+            padding: 12px 24px; border-radius: 25px; font-weight: bold; cursor: pointer;
+        }
+
+        #tela-mensagem {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--cor-brilhante);
+            z-index: 200; padding: 45px 25px; box-sizing: border-box;
+            overflow-y: auto;
+        }
+        #tela-mensagem.visivel { display: block; }
+        .texto-completo { font-size: 26px; font-weight: bold; line-height: 1.5; margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+<audio id="player-audio" src="Aliança.mp3"></audio>
+
+<div class="layout-geral">
+    <div class="topo-navegacao">
+        <i class="fas fa-chevron-down"></i>
+        <span style="font-weight: 600;">Feito com amor</span>
+        <i class="fas fa-ellipsis-v"></i>
+    </div>
+
+    <img src="Aliança.jpeg" class="imagem-capa">
+
+    <div class="detalhes-musica">
+        <div>
+            <h2>Aliança</h2>
+            <p>Tribalistas</p>
+        </div>
+        <i class="fas fa-heart" style="color: #fff; font-size: 22px;"></i>
+    </div>
+
+    <div class="barra-tempo" id="container-progresso">
+        <div id="progresso-interno"></div>
+    </div>
+    <div class="indicador-tempo">
+        <span id="tempo-atual">0:00</span>
+        <span id="tempo-total">-:--</span>
+    </div>
+
+    <div class="controles-musica">
+        <i class="fas fa-random" style="opacity: 0.6;"></i>
+        <i class="fas fa-step-backward"></i>
+        <button class="botao-acao" onclick="gerenciarMusica()">
+            <i class="fas fa-play" id="icone-play"></i>
+        </button>
+        <i class="fas fa-step-forward"></i>
+        <i class="fas fa-redo" style="opacity: 0.6;"></i>
+    </div>
+
+    <div class="bloco-conteudo">
+        <span class="texto-sobreposto">Nosso Tempo</span>
+        <img src="Imagem1.png" class="foto-casal">
+        <h3 style="margin: 0 0 8px 0;">Vinicius Henrique e Agnnes Beatriz</h3>
+        <p style="color:#bbbbbb; font-size:12px; margin:2px 0">Marcos importantes:</p>
+        <p style="color:#fff; font-size:12px; margin:0">❤ Início: 01/02/2026</p>
+        <p style="color:#fff; font-size:12px; margin:0">💍 Namoro: 21/03/2026</p>
+
+        <div class="grade-cronometro">
+            <div class="caixa-tempo"><span id="val-anos">0</span><small>Anos</small></div>
+            <div class="caixa-tempo"><span id="val-meses">0</span><small>Meses</small></div>
+            <div class="caixa-tempo"><span id="val-dias">0</span><small>Dias</small></div>
+            <div class="caixa-tempo"><span id="val-horas">0</span><small>Horas</small></div>
+            <div class="caixa-tempo"><span id="val-min">0</span><small>Min</small></div>
+            <div class="caixa-tempo"><span id="val-seg">0</span><small>Seg</small></div>
+        </div>
+    </div>
+
+    <div class="bloco-mensagem">
+        <p>Tu és a melhor pessoa que Deus poderia me enviar...</p>
+        <button class="botao-abrir" onclick="verMensagem()">Ler tudo</button>
+    </div>
+</div>
+
+<div id="tela-mensagem">
+    <i class="fas fa-times" style="font-size: 28px; cursor: pointer;" onclick="verMensagem()"></i>
+    <div class="texto-completo">
+        Você é a melhor pessoa que Deus poderia me enviar. É uma pessoa incrível e não tem noção do quanto é especial para mim. Eu te amo tanto, meu amor! Um dia eu irei te dar o mundo...<br><br> Espera só um pouquinho tá?
+    </div>
+</div>
+
+<script>
+    const som = document.getElementById('player-audio');
+    const icone = document.getElementById('icone-play');
+    const barra = document.getElementById('progresso-interno');
+
+    function gerenciarMusica() {
+        if (som.paused) {
+            som.play();
+            icone.className = 'fas fa-pause';
+        } else {
+            som.pause();
+            icone.className = 'fas fa-play';
+        }
+    }
+
+    som.ontimeupdate = () => {
+        const porc = (som.currentTime / som.duration) * 100;
+        barra.style.width = porc + '%';
+        document.getElementById('tempo-atual').innerText = formatar(som.currentTime);
+    };
+
+    som.onloadedmetadata = () => {
+        document.getElementById('tempo-total').innerText = formatar(som.duration);
+    };
+
+    function formatar(s) {
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return m + ":" + (sec < 10 ? '0' : '') + sec;
+    }
+
+    function rodarCronometro() {
+        const inicio = new Date("2026-02-01T00:00:00");
+        const agora = new Date();
+        const diferenca = agora - inicio;
+
+        document.getElementById('val-anos').innerText = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365));
+        document.getElementById('val-meses').innerText = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+        document.getElementById('val-dias').innerText = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+        document.getElementById('val-horas').innerText = agora.getHours();
+        document.getElementById('val-min').innerText = agora.getMinutes();
+        document.getElementById('val-seg').innerText = agora.getSeconds();
+    }
+
+    setInterval(rodarCronometro, 1000);
+    rodarCronometro();
+
+    function verMensagem() {
+        document.getElementById('tela-mensagem').classList.toggle('visivel');
+    }
+</script>
+</body>
+</html>
