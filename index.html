@@ -199,9 +199,8 @@
         <span class="texto-sobreposto">Nosso Tempo</span>
         <img src="Imagem1.png" class="foto-casal">
         <h3 style="margin: 0 0 8px 0;">Vinicius Henrique e Agnnes Beatriz</h3>
-        <p style="color:#bbbbbb; font-size:12px; margin:2px 0">Marcos importantes:</p>
+        <p style="color:#bbbbbb; font-size:12px; margin:2px 0">Desde o primeiro encontro:</p>
         <p style="color:#fff; font-size:12px; margin:0">❤ Início: 01/02/2026</p>
-        <p style="color:#fff; font-size:12px; margin:0">💍 Namoro: 21/03/2026</p>
 
         <div class="grade-cronometro">
             <div class="caixa-tempo"><span id="val-anos">0</span><small>Anos</small></div>
@@ -210,6 +209,20 @@
             <div class="caixa-tempo"><span id="val-horas">0</span><small>Horas</small></div>
             <div class="caixa-tempo"><span id="val-min">0</span><small>Min</small></div>
             <div class="caixa-tempo"><span id="val-seg">0</span><small>Seg</small></div>
+        </div>
+    </div>
+
+    <div class="bloco-conteudo">
+        <h3 style="margin: 0 0 8px 0;">Tempo Oficial de Namoro</h3>
+        <p style="color:#fff; font-size:12px; margin:0">💍 Namoro: 23/03/2026</p>
+
+        <div class="grade-cronometro">
+            <div class="caixa-tempo"><span id="nam-anos">0</span><small>Anos</small></div>
+            <div class="caixa-tempo"><span id="nam-meses">0</span><small>Meses</small></div>
+            <div class="caixa-tempo"><span id="nam-dias">0</span><small>Dias</small></div>
+            <div class="caixa-tempo"><span id="nam-horas">0</span><small>Horas</small></div>
+            <div class="caixa-tempo"><span id="nam-min">0</span><small>Min</small></div>
+            <div class="caixa-tempo"><span id="nam-seg">0</span><small>Seg</small></div>
         </div>
     </div>
 
@@ -257,21 +270,36 @@
         return m + ":" + (sec < 10 ? '0' : '') + sec;
     }
 
-    function rodarCronometro() {
-        const inicio = new Date("2026-02-01T00:00:00");
+    function rodarCronometros() {
         const agora = new Date();
-        const diferenca = agora - inicio;
-
-        document.getElementById('val-anos').innerText = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365));
-        document.getElementById('val-meses').innerText = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-        document.getElementById('val-dias').innerText = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+        
+        // --- Cálculo Cronômetro 1 (Início) ---
+        const inicio = new Date("2026-02-01T00:00:00");
+        const diffInic = agora - inicio;
+        
+        document.getElementById('val-anos').innerText = Math.floor(diffInic / (1000 * 60 * 60 * 24 * 365));
+        document.getElementById('val-meses').innerText = Math.floor((diffInic % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+        document.getElementById('val-dias').innerText = Math.floor((diffInic % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
         document.getElementById('val-horas').innerText = agora.getHours();
         document.getElementById('val-min').innerText = agora.getMinutes();
         document.getElementById('val-seg').innerText = agora.getSeconds();
+
+        // --- Cálculo Cronômetro 2 (Namoro: 23/03/2026) ---
+        const namoro = new Date("2026-03-23T00:00:00");
+        const diffNam = agora - namoro;
+
+        if (diffNam > 0) {
+            document.getElementById('nam-anos').innerText = Math.floor(diffNam / (1000 * 60 * 60 * 24 * 365));
+            document.getElementById('nam-meses').innerText = Math.floor((diffNam % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            document.getElementById('nam-dias').innerText = Math.floor((diffNam % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            document.getElementById('nam-horas').innerText = agora.getHours();
+            document.getElementById('nam-min').innerText = agora.getMinutes();
+            document.getElementById('nam-seg').innerText = agora.getSeconds();
+        }
     }
 
-    setInterval(rodarCronometro, 1000);
-    rodarCronometro();
+    setInterval(rodarCronometros, 1000);
+    rodarCronometros();
 
     function verMensagem() {
         document.getElementById('tela-mensagem').classList.toggle('visivel');
