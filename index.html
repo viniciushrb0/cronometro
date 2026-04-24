@@ -213,8 +213,8 @@
     </div>
 
     <div class="bloco-conteudo">
-        <h3 style="margin: 0 0 8px 0;">Tempo Oficial de Namoro</h3>
-        <p style="color:#fff; font-size:12px; margin:0">💍 Namoro: 23/03/2026</p>
+        <h3 style="margin: 0 0 8px 0;">Tempo de Namoro</h3>
+        <p style="color:#fff; font-size:12px; margin:0">💍 Namoro: 21/03/2026</p>
 
         <div class="grade-cronometro">
             <div class="caixa-tempo"><span id="nam-anos">0</span><small>Anos</small></div>
@@ -273,25 +273,25 @@
     function rodarCronometros() {
         const agora = new Date();
         
-        // --- Cálculo Cronômetro 1 (Início) ---
+        // --- Cronômetro 1: Início (01/02/2026) ---
         const inicio = new Date("2026-02-01T00:00:00");
         const diffInic = agora - inicio;
         
-        document.getElementById('val-anos').innerText = Math.floor(diffInic / (1000 * 60 * 60 * 24 * 365));
-        document.getElementById('val-meses').innerText = Math.floor((diffInic % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-        document.getElementById('val-dias').innerText = Math.floor((diffInic % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+        document.getElementById('val-anos').innerText = Math.floor(diffInic / (1000 * 60 * 60 * 24 * 365.25));
+        document.getElementById('val-meses').innerText = Math.floor((diffInic % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+        document.getElementById('val-dias').innerText = Math.floor((diffInic % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
         document.getElementById('val-horas').innerText = agora.getHours();
         document.getElementById('val-min').innerText = agora.getMinutes();
         document.getElementById('val-seg').innerText = agora.getSeconds();
 
-        // --- Cálculo Cronômetro 2 (Namoro: 23/03/2026) ---
-        const namoro = new Date("2026-03-23T00:00:00");
+        // --- Cronômetro 2: Namoro (21/03/2026) ---
+        const namoro = new Date("2026-03-21T00:00:00");
         const diffNam = agora - namoro;
 
         if (diffNam > 0) {
-            document.getElementById('nam-anos').innerText = Math.floor(diffNam / (1000 * 60 * 60 * 24 * 365));
-            document.getElementById('nam-meses').innerText = Math.floor((diffNam % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-            document.getElementById('nam-dias').innerText = Math.floor((diffNam % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            document.getElementById('nam-anos').innerText = Math.floor(diffNam / (1000 * 60 * 60 * 24 * 365.25));
+            document.getElementById('nam-meses').innerText = Math.floor((diffNam % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+            document.getElementById('nam-dias').innerText = Math.floor((diffNam % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
             document.getElementById('nam-horas').innerText = agora.getHours();
             document.getElementById('nam-min').innerText = agora.getMinutes();
             document.getElementById('nam-seg').innerText = agora.getSeconds();
